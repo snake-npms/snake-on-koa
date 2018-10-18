@@ -10,6 +10,7 @@ module.exports = function (projectName, options) {
   fs.copySync(path.join(templatePath, 'app'), path.join(projectPath, 'app'))
   fs.copySync(path.join(templatePath, 'config'), path.join(projectPath, 'config'))
   fs.copySync(path.join(templatePath, 'db'), path.join(projectPath, 'db'))
+  fs.copySync(path.join(templatePath, 'logs'), path.join(projectPath, 'logs'))
   fs.copySync(path.join(templatePath, '.gitignore'), path.join(projectPath, '.gitignore'))
   fs.copySync(path.join(templatePath, '.snakeormrc.js'), path.join(projectPath, '.snakeormrc.js'))
   fs.copySync(path.join(templatePath, 'package.json'), path.join(projectPath, 'package.json'))
