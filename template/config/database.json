@@ -1,0 +1,14 @@
+{
+  "logger": true,
+  "dialect": "sqlite3",
+  "development": {
+    "database": "snake-app-development.sqlite3",
+    "username": "",
+    "password": null,
+    "logger": true,
+    "autoMigrate": true
+  },
+  "test": {
+    "database": "snake-app-test.sqlite3"
+  }
+}
