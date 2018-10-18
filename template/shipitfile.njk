@@ -1,0 +1,55 @@
+module.exports = shipit => {
+  // Load shipit-deploy tasks
+  require('shipit-deploy')(shipit)
+  require('shipit-shared')(shipit);
+  
+  shipit.initConfig({
+    default: {
+      deployTo: '/mnt/www/{{ projectName }}',
+      repositoryUrl: 'https://github.com/your-repo-url',
+      keepReleases: 8,
+      ignores: ['.git', 'node_modules', 'logs', 'test', 'config/database.json', 'config/env.json'],
+      shared: {
+        overwrite: true,
+        dirs: ['logs', 'node_modules'],
+        files: [
+          'config/env.json',
+          'config/database.json',
+          'pm2.config.json'
+        ],
+      }
+    },
+    staging: {
+      servers: 'deploy@staging.super-project.com',
+      branch: 'develop',
+    },
+    production: {
+      servers: [{
+        host: 'app1.myproject.com',
+        user: 'john',
+      }, {
+        host: 'app2.myproject.com',
+        user: 'rob',
+      }],
+      branch: 'master'
+    }
+  })
+  
+  // 监听部署事件，在部署中不同生命周期中插入任务
+  shipit.on('deploy', function () {
+    shipit.on('published', async function () {
+      await shipit.remote('npm install --production', { cwd: `${shipit.config.deployTo}/current`})
+      // await shipit.start('pm2:start');
+    })
+  })
+  
+  // shipit staging pm2:start
+  shipit.task('pm2:start', function() {
+    console.log('======= - pm2:start - =======')
+    shipit.remote('pm2 list');
+    shipit.remote('pm2 startOrGracefulReload pm2.config.json', {cwd: `${shipit.config.deployTo}/current`})
+    setTimeout(() => {
+      shipit.remote('pm2 list');
+    }, 5000)
+  })
+}

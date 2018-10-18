@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs-extra')
+const utils = require('../private/utils')
 const templatePath = path.resolve(__dirname, '../../template')
 module.exports = function (projectName, options) {
   const projectPath = path.resolve(process.cwd(), projectName)
@@ -12,6 +13,7 @@ module.exports = function (projectName, options) {
   fs.copySync(path.join(templatePath, '.gitignore'), path.join(projectPath, '.gitignore'))
   fs.copySync(path.join(templatePath, '.snakeormrc.js'), path.join(projectPath, '.snakeormrc.js'))
   fs.copySync(path.join(templatePath, 'package.json'), path.join(projectPath, 'package.json'))
+  utils.readWriteFile(path.join(templatePath, 'shipitfile.njk'), path.join(projectPath, 'shipitfile.js'), {projectName})
   fs.copySync(path.join(templatePath, 'start.js'), path.join(projectPath, 'start.js'))
   
   // change database config
