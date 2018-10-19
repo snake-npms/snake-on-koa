@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "require-directory": "^2.1.1",
-    "snake-on-koa-core": "0.0.3"
+    "snake-on-koa-core": "0.0.4"
   },
   "devDependencies": {
     "shipit-deploy": "^4.1.1",
