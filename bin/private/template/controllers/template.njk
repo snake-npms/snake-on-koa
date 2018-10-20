@@ -1,0 +1,27 @@
+let BaseController = require('./BaseController')
+class {{ filename }} extends BaseController {
+  constructor () {
+    super({prefix: '{{ prefix }}'})
+
+    {% if index %}// index
+    this.get('/', async (ctx, next) => {
+      ctx.body = []
+    }){% endif %}
+
+    {% if show %}// show
+    this.get('/{% if mayPluralize %}:id{% endif %}', async (ctx, next) => {
+      ctx.body = {}
+    }){% endif %}
+
+    {% if update %}// update
+    this.put('/:id', async (ctx, next) => {
+      ctx.body = {}
+    }){% endif %}
+
+    {% if delete %}// delete
+    this.delete('/:id', async (ctx, next) => {
+      ctx.body = {}
+    }){% endif %}
+  }
+}
+module.exports = {{ filename }}

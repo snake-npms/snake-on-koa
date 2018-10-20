@@ -15,6 +15,7 @@
     "async-repl": "^0.4.0",
     "commander": "^2.19.0",
     "fs-extra": "^7.0.0",
-    "nunjucks": "^3.1.3"
+    "nunjucks": "^3.1.3",
+    "snake-utils": "0.0.9"
   }
 }

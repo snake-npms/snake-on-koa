@@ -3,7 +3,7 @@ const stubber = require('async-repl/stubber')
 const path = require('path')
 async function initializeContext () {
   const Application = require(path.resolve(process.cwd(), 'config/application'))
-  let application = new Application({})
+  let application = new Application({skipKoa: true})
   await application.register()
 }
 module.exports = async function () {
