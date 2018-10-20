@@ -14,5 +14,5 @@ module.exports = async function (controller, args) {
     options[key] = true
   })
   console.log(controller, options)
-  utils.readWriteFile(path.join(__dirname, '../private/template/controllers/template.njk'), path.join(filePath, `./${filename}.js`), Object.assign({filename, prefix}, options))
+  await utils.readWriteFile(path.join(__dirname, '../private/template/controllers/template.njk'), path.join(filePath, `./${filename}.js`), Object.assign({filename, prefix}, options))
 }

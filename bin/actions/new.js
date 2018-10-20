@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs-extra')
 const utils = require('../private/utils')
 const templatePath = path.resolve(__dirname, '../../template')
-module.exports = function (projectName, options) {
+module.exports = async function (projectName, options) {
   const projectPath = path.resolve(process.cwd(), projectName)
   // create project dir
   fs.mkdirpSync(projectPath)
@@ -14,7 +14,7 @@ module.exports = function (projectName, options) {
   fs.copySync(path.join(templatePath, '.gitignore'), path.join(projectPath, '.gitignore'))
   fs.copySync(path.join(templatePath, '.snakeormrc.js'), path.join(projectPath, '.snakeormrc.js'))
   fs.copySync(path.join(templatePath, 'package.json'), path.join(projectPath, 'package.json'))
-  utils.readWriteFile(path.join(templatePath, 'shipitfile.njk'), path.join(projectPath, 'shipitfile.js'), {projectName})
+  await utils.readWriteFile(path.join(templatePath, 'shipitfile.njk'), path.join(projectPath, 'shipitfile.js'), {projectName})
   fs.copySync(path.join(templatePath, 'start.js'), path.join(projectPath, 'start.js'))
   
   // change database config
@@ -39,7 +39,6 @@ module.exports = function (projectName, options) {
       packageJson['dependencies']['sqlite3'] = '^4.0.2'
   }
   fs.writeJsonSync(packageJsonPath, packageJson, {spaces: 2})
-  
   
   console.log(projectName, options.db)
 }

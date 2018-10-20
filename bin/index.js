@@ -7,13 +7,19 @@ program.version(packageJson.version)
 
 // snake new project -d [mysql|sqlite3]
 program.command('new <project>')//.arguments('<project>')
+  .description('new project')
   .option('-d --db <db>', 'db type', /^(sqlite3|mysql)$/i, 'sqlite3')
   .action(require('./actions/new'))
 
 // snake console
-program.command('console').action(require('./actions/console'));
+program.command('console')
+  .alias('c')
+  .description('into console')
+  .action(require('./actions/console'));
 
 program.command('generate <cmd>')
+  .alias('g')
+  .description('generate [controller|model]')
   .arguments('<cmd> [value][arguments]')
   .action((cmd, value) => {
     let args = process.argv.slice(process.argv.indexOf(value) + 1, process.argv.length)
