@@ -27,6 +27,8 @@ program.command('generate <cmd>')
       case 'controller':
         require('./actions/controller-generate')(value, args)
         break
+      case 'model':
+        require('./actions/model-generate')(value, args)
       default:
     }
   })

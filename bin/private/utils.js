@@ -7,9 +7,10 @@ module.exports = {
   },
   async readWriteFile(readFrom, writeTo, replaceObj) {
     if (fs.existsSync(writeTo)) {
-      const answer = await promptly.confirm('File Exist, Are you sure override?')
+      const answer = await promptly.confirm(`${writeTo} Exist, Are you sure override?`)
       if (answer) {
         this._readWriteFile(readFrom, writeTo, replaceObj)
+        console.log('overwritten!')
       } else {
         console.log('canceled!')
       }

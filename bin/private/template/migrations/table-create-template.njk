@@ -1,0 +1,10 @@
+module.exports = {
+  async up (orm) {
+    await orm.createTable('{{table}}', {}, function (t) {
+      {% for row in gFields %}
+      {{ row|safe }}
+      {% endfor %}
+      t.timestamps()
+    })
+  }
+}
