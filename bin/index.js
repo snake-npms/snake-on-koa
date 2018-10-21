@@ -25,7 +25,21 @@ program.command('generate <cmd>')
     let args = process.argv.slice(process.argv.indexOf(value) + 1, process.argv.length)
     switch (cmd) {
       case 'controller':
-        require('./actions/generate-controller')(value, args)
+        require('./actions/controller-generate')(value, args)
+        break
+      default:
+    }
+  })
+
+program.command('destroy <cmd>')
+  .alias('d')
+  .description('desctroy [controller|model]')
+  .arguments('<cmd> [value][arguments]')
+  .action((cmd, value) => {
+    let args = process.argv.slice(process.argv.indexOf(value) + 1, process.argv.length)
+    switch (cmd) {
+      case 'controller':
+        require('./actions/controller-destroy')(value, args)
         break
       default:
     }
