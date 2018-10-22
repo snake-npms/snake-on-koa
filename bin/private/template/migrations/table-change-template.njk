@@ -1,0 +1,7 @@
+module.exports = {
+  async up (orm) {
+	{% for row in gFields %}
+    {{ row|safe }}
+    {% endfor %}
+  }
+}

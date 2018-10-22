@@ -25,7 +25,7 @@ module.exports = async (model, attributes) => {
     let ormRcConfig = require(defaultOrmRcPath)
     migrationsPath = ormRcConfig["migrations-path"] || migrationsPath
   }
-  let migrateFileName = `${Date.now().strftime('YMdHms')}-create-${modelName}`
+  let migrateFileName = `${Date.now().strftime('YMdHms')}_create_${modelName}`
   if (fs.existsSync(defaultOrmRcPath)) {
     await utils.readWriteFile(path.join(__dirname, '../private/template/migrations/table-create-template.njk'), path.join(migrationsPath, `${migrateFileName}.js`), {table: tableName, gFields})
     console.log(migrateFileName)
