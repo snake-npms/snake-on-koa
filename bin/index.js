@@ -51,4 +51,8 @@ program.command('destroy <cmd>')
     }
   })
 
+program.command('db:create').action(require('./actions/db-create'))
+program.command('db:migrate').action(require('./actions/db-migrate'))
+program.command('db:drop').action(require('./actions/db-drop'))
+
 program.parse(process.argv);

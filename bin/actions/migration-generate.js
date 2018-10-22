@@ -1,5 +1,4 @@
 const fs = require('fs')
-const pluralize = require('pluralize')
 const path = require('path')
 const utils = require('../private/utils')
 module.exports = async (migrationName, attributes) => {
