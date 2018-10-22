@@ -29,8 +29,10 @@ program.command('generate <cmd>')
         break
       case 'model':
         require('./actions/model-generate')(value, args)
+        break
       case 'migration':
         require('./actions/migration-generate')(value, args)
+        break
       default:
     }
   })
