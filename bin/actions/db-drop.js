@@ -1,5 +1,6 @@
 const path = require('path')
-module.exports = async function () {
+const promptly = require('promptly')
+module.exports = async () => {
   const Application = require(path.resolve(process.cwd(), 'config/application'))
   let { SnakeOrm } = Application
   let rcConfigPath = null
@@ -15,7 +16,13 @@ module.exports = async function () {
   if (connectOptions.dialect === 'mysql') {
     connectOptions.database = 'information_schema'
   }
-  let orm = SnakeOrm.getOrCreateSnakeOrmProxy(connectOptions.database, connectOptions.username, connectOptions.password, connectOptions)
-  await orm.dropDatabase(shouldDropDatabase)
+  const answer = await promptly.confirm(`Are you sure drop database：${shouldDropDatabase}`)
+  if (answer) {
+    console.log('Dropping!')
+    let orm = SnakeOrm.getOrCreateSnakeOrmProxy(connectOptions.database, connectOptions.username, connectOptions.password, connectOptions)
+    await orm.dropDatabase(shouldDropDatabase)
+  } else {
+    console.log('Canceled!')
+  }
   process.exit(0)
 }
