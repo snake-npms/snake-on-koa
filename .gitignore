@@ -4,3 +4,4 @@ hello
 *.sqlite3
 package-lock.json
 logs/
+public/
