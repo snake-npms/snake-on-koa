@@ -14,7 +14,7 @@ module.exports = async (model, attributes) => {
     let ormRcConfig = require(defaultOrmRcPath)
     migrationsPath = ormRcConfig["migrations-path"] || migrationsPath
   }
-  let migrateFileName = `${Date.now().strftime('YMdHms')}_create_${tableName}`
+  let migrateFileName = `${Date.current().strftime('YMdHms')}_create_${tableName}`
   
   // 判断文件是否存在
   if (fs.readdirSync(migrationsPath).filter((file) => { return file.replace(/^[0-9|_]+/, '').replace('\.js', '') === `create_${tableName}`}).length) {

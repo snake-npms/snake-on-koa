@@ -13,6 +13,7 @@ module.exports = async function (projectName, options) {
   // create log folder
   fs.mkdirpSync(path.join(projectPath, 'logs'))
   fs.mkdirpSync(path.join(projectPath, 'public/upload'))
+  fs.copySync(path.join(templatePath, 'public/index.html'), path.join(projectPath, 'public/index.html'))
   // fs.copySync(path.join(templatePath, 'logs'), path.join(projectPath, 'logs'))
   fs.copySync(path.join(templatePath, '.gitignore.njk'), path.join(projectPath, '.gitignore'))
   fs.copySync(path.join(templatePath, '.snakeormrc.js'), path.join(projectPath, '.snakeormrc.js'))
