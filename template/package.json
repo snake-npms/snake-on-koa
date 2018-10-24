@@ -9,9 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "koa-body": "^4.0.4",
+    "koa2-cors": "^2.0.6",
     "require-directory": "^2.1.1",
     "snake-logger": "^0.0.6",
-    "snake-on-koa-core": "^0.0.19"
+    "snake-on-koa-core": "^0.0.20"
   },
   "devDependencies": {
     "shipit-deploy": "^4.1.1",

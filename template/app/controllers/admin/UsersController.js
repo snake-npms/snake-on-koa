@@ -8,6 +8,7 @@ class UsersController extends BaseController {
     })
     
     this.post('/', async (ctx, next) => {
+      console.log(111)
       ctx.body = ctx.params
     })
   }
