@@ -3,7 +3,7 @@
   "dialect": "sqlite3",
   "development": {
     "database": "snake-app-development.sqlite3",
-    "username": "",
+    "username": "root",
     "password": null,
     "logger": true,
     "autoMigrate": true

@@ -1,17 +1,9 @@
 const path = require('path')
 const fs = require('fs')
-const send = require('koa-send')
 let ApplicationController = require('./ApplicationController')
 class UploadController extends ApplicationController {
   constructor () {
     super({prefix: '/upload'})
-    
-    this.get('/:path', async (ctx) => {
-      const filePath = path.join('public/upload', ctx.params.path)
-      console.log(filePath)
-      ctx.attachment(filePath);
-      await send(ctx, filePath)
-    })
     
     this.post('/', async (ctx) => {
       const file = ctx.request.files.file	// 获取上传文件
