@@ -22,7 +22,7 @@ class {{ filename }} extends BaseController {
     {% endif %}
 
     {% if create %}// create
-      this.post('/', async (ctx, next) => {
+    this.post('/', async (ctx, next) => {
       ctx.body = {}
     })
     {% endif %}

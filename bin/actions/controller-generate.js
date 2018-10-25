@@ -9,7 +9,7 @@ module.exports = async (controller, args) => {
   let filePath = path.join('app/controllers', controller, '../', filename)
   let fileFullPath = path.join(process.cwd(), filePath, '../')
   fs.mkdirpSync(fileFullPath)
-  let prefix = controller.replace('Controller', '').split('/').map(item => item.toSnakeCase()).join('/')
+  let prefix = path.join('/', controller.replace('Controller', '').split('/').map(item => item.toSnakeCase()).join('/'))
   let options = {}
   args.forEach(key => {
     options[key] = true
