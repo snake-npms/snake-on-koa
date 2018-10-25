@@ -6,14 +6,14 @@ module.exports = async (controller, args) => {
     controller = `${controller}Controller`
   }
   let filename = controller.split('/').pop().toCapitalize()
-  controller = path.join('app/controllers', controller, '../', filename)
-  let filePath = path.join(process.cwd(), controller, '../')
-  fs.mkdirpSync(filePath)
+  let filePath = path.join('app/controllers', controller, '../', filename)
+  let fileFullPath = path.join(process.cwd(), filePath, '../')
+  fs.mkdirpSync(fileFullPath)
   let prefix = controller.replace('Controller', '').split('/').map(item => item.toSnakeCase()).join('/')
   let options = {}
   args.forEach(key => {
     options[key] = true
   })
   console.log(controller, options)
-  await utils.readWriteFile(path.join(__dirname, '../private/template/controllers/template.njk'), path.join(filePath, `./${filename}.js`), Object.assign({filename, prefix}, options))
+  await utils.readWriteFile(path.join(__dirname, '../private/template/controllers/template.njk'), path.join(fileFullPath, `./${filename}.js`), Object.assign({filename, prefix}, options))
 }

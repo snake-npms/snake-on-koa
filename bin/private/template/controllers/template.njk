@@ -6,22 +6,32 @@ class {{ filename }} extends BaseController {
     {% if index %}// index
     this.get('/', async (ctx, next) => {
       ctx.body = []
-    }){% endif %}
+    })
+    {% endif %}
 
     {% if show %}// show
     this.get('/{% if mayPluralize %}:id{% endif %}', async (ctx, next) => {
       ctx.body = {}
-    }){% endif %}
+    })
+    {% endif %}
 
     {% if update %}// update
     this.put('/:id', async (ctx, next) => {
       ctx.body = {}
-    }){% endif %}
+    })
+    {% endif %}
+
+    {% if create %}// create
+      this.post('/', async (ctx, next) => {
+      ctx.body = {}
+    })
+    {% endif %}
 
     {% if delete %}// delete
     this.delete('/:id', async (ctx, next) => {
       ctx.body = {}
-    }){% endif %}
+    })
+    {% endif %}
   }
 }
 module.exports = {{ filename }}

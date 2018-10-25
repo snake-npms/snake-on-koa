@@ -1,6 +1,6 @@
 {
   "name": "snake-on-koa",
-  "version": "0.0.1-rc.8",
+  "version": "0.0.1-rc.9",
   "description": "",
   "bin": {
     "snake": "bin/index.js"
