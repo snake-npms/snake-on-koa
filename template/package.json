@@ -14,7 +14,7 @@
     "koa2-cors": "^2.0.6",
     "require-directory": "^2.1.1",
     "snake-logger": "^0.0.6",
-    "snake-on-koa-core": "^0.0.23"
+    "snake-on-koa-core": "^0.0.25"
   },
   "devDependencies": {
     "shipit-deploy": "^4.1.1",
