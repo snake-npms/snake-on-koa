@@ -3,6 +3,7 @@ module.exports = {
 		// await ormProxy.runSql(`CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR(20), createdAt datetime, updatedAt datetime)`)
 		await ormProxy.createTable('users', {}, function (t) {
 			t.string('username', {null: false, unique: true})
+			t.string('password', {null: false})
 			t.string('mobile')
 			t.timestamps()
 		})
